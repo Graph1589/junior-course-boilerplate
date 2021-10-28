@@ -1,0 +1,12 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  min-height: 100px;
+}
+
+li {
+  margin: 10px;
+}
