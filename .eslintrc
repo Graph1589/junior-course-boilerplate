@@ -1,6 +1,23 @@
 {
-  "extends": "react-app",
-  "rules": {
-    "quotes": [2, "single", { "avoidEscape": true }]
-  }
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "quotes": [2, "single", { "avoidEscape": true }]
+    }
 }
