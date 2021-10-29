@@ -25,10 +25,12 @@ const ProductsList = ({ products }) => {
     ))
   );
 
+  const list = renderList();
+
   return (
     <>
       <ProductsHeader />
-      <ul className={styled.productsList}>{renderList()}</ul>
+      <ul className={styled.productsList}>{list.length === 0 ? 'Товары не найдены' : list}</ul>
     </>
   );
 };
