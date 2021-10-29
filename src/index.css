@@ -4,9 +4,5 @@ main {
 }
 
 header {
-  min-height: 100px;
-}
-
-li {
-  margin: 10px;
+  min-height: 50px;
 }

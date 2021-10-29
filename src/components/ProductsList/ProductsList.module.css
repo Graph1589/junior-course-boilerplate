@@ -1,0 +1,13 @@
+.productsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 736px;
+  list-style: none;
+  padding-inline-start: 0px;
+  margin: 50px;
+}
+
+.itemWrapper {
+  margin-bottom: 50px;
+}
