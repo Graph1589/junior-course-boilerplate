@@ -1,26 +1,62 @@
 [
   {
     "id": 1,
-    "name": "Имя товара1"
+    "name": "Имя товара1",
+    "img": "/productImage/product1.png",
+    "price": "23 000 ₽",
+    "subPriceContent": "",
+    "maxRating": 5,
+    "rating": 3,
+    "isInStock": true
   },
   {
     "id": 2,
-    "name": "Имя товара2"
+    "name": "Имя товара2",
+    "img": "/productImage/product2.png",
+    "price": "23 000 ₽",
+    "subPriceContent": "",
+    "maxRating": 5,
+    "rating": 3,
+    "isInStock": false
   },
   {
     "id": 3,
-    "name": "Имя товара3"
+    "name": "Имя товара3",
+    "img": "/productImage/product3.png",
+    "price": "23 000 ₽",
+    "subPriceContent": "",
+    "maxRating": 5,
+    "rating": 3,
+    "isInStock": true
   },
   {
     "id": 4,
-    "name": "Имя товара4"
+    "name": "Имя товара4",
+    "img": "/productImage/product4.png",
+    "price": "23 000 ₽",
+    "subPriceContent": "",
+    "maxRating": 5,
+    "rating": 3,
+    "isInStock": true
   },
   {
     "id": 5,
-    "name": "Имя товара5"
+    "name": "Имя товара5",
+    "img": "/productImage/product5.png",
+    "price": "23 000 ₽",
+    "subPriceContent": "",
+    "maxRating": 5,
+    "rating": 3,
+    "isInStock": true
   },
   {
     "id": 6,
-    "name": "Имя товара6"
+    "name": "Имя товара6",
+    "img": "/productImage/product6.png",
+    "price": "23 000 ₽",
+    "subPriceContent": "",
+    "maxRating": 5,
+    "rating": 3,
+    "isInStock": false
   }
 ]
