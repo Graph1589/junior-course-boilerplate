@@ -24,7 +24,7 @@
     "name": "Имя товара3",
     "img": "/productImage/product3.png",
     "price": "23 000 ₽",
-    "subPriceContent": "",
+    "subPriceContent": "21 000 ₽",
     "maxRating": 5,
     "rating": 3,
     "isInStock": true

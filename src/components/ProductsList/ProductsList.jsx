@@ -15,8 +15,8 @@ const ProductsList = ({ products }) => {
           isInStock={isInStock}
           img={img}
           title={name}
-          price={price}
-          subPriceContent={subPriceContent}
+          price={<span className={styled.price}>{price}</span>}
+          subPriceContent={<span className={styled.subPriceContent}>{subPriceContent}</span>}
           maxRating={maxRating}
           rating={rating}
           ratingComponent={RatingStar}

@@ -11,3 +11,26 @@
 .itemWrapper {
   margin-bottom: 50px;
 }
+
+.subPriceContent {
+  font-family: OpenSans, sans-serif;
+  font-size: 12px;
+  line-height: 24px;
+  color: #323c48;
+  padding-left: 8px;
+}
+
+.price {
+  font-family: OpenSans, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  color: #323c48;
+}
+
+.title {
+  font-family: OpenSans;
+  font-size: 16px;
+  line-height: 24px;
+  color: #323c48;
+  font-weight: 400;
+}
