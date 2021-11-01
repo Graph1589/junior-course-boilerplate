@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductItem from 'csssr-school-product-card';
-import ProductsHeader from '../ProductsHeader/ProductsHeader';
 import RatingStar from '../RatingStar';
 import styled from './ProductsList.module.css';
 
@@ -28,10 +27,7 @@ const ProductsList = ({ products }) => {
   const list = renderList();
 
   return (
-    <>
-      <ProductsHeader />
-      <ul className={styled.productsList}>{list.length === 0 ? 'Товары не найдены' : list}</ul>
-    </>
+    <div className={styled.productsList}>{list.length === 0 ? 'Товары не найдены' : list}</div>
   );
 };
 
