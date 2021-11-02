@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from './ProductFilter.module.css';
 
-const ProductFilter = () => {
-  const submitHandler = (e) => {
+const ProductFilter = ({ setFilter, defaultMinPrice, defaultMaxPrice }) => {
+  const inputMinPrice = useRef(null);
+  const inputMaxPrice = useRef(null);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    const formData = new FormData(e.target);
-    const minPrice = formData.get('minPrice');
-    const maxPrice = formData.get('maxPrice');
-    console.log(minPrice);
-    console.log(maxPrice);
+    const minPrice = +inputMinPrice.current.value;
+    const maxPrice = +inputMaxPrice.current.value;
+    setFilter({
+      minPrice: minPrice < 0 ? null : minPrice,
+      maxPrice: maxPrice < 0 ? null : maxPrice,
+    });
   };
 
   return (
     <div className={styled.filter}>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={handleSubmit}>
         <div className={styled.title}>
           <b>Цена</b>
         </div>
         <div className={styled.inputContainer}>
           <b>От</b>
-          <input name="minPrice" className={styled.input} type="number" placeholder="1999" />
+          <input ref={inputMinPrice} name="minPrice" className={styled.input} type="number" placeholder={defaultMinPrice} />
           <b>До</b>
-          <input name="maxPrice" className={styled.input} type="number" placeholder="28000" />
+          <input ref={inputMaxPrice} name="maxPrice" className={styled.input} type="number" placeholder={defaultMaxPrice} />
         </div>
         <div>
           <input className={styled.submit} type="submit" value="Применить" />
@@ -30,6 +34,17 @@ const ProductFilter = () => {
       </form>
     </div>
   );
+};
+
+ProductFilter.defaultProps = {
+  defaultMinPrice: 1,
+  defaultMaxPrice: 999999,
+};
+
+ProductFilter.propTypes = {
+  setFilter: PropTypes.func.isRequired,
+  defaultMinPrice: PropTypes.number,
+  defaultMaxPrice: PropTypes.number,
 };
 
 export default ProductFilter;

@@ -1,7 +1,7 @@
 /* Список товаров */
 .productsHeader {
   grid-area: header;
-  height: 100px;
+  height: 50px;
   margin: 0;
   font-family: OpenSans, sans-serif;
   font-style: normal;
