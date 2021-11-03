@@ -14,23 +14,30 @@ const App = ({ products }) => {
     filter: {
       minPrice: null,
       maxPrice: null,
+      defaultMinPrice,
+      defaultMaxPrice,
     },
   };
 
   const [filter, setFilter] = useState(initState.filter);
 
+  const { minPrice, maxPrice } = filter;
+  const filteredProducts = products
+    .filter(({ price }) => (!minPrice || (price >= minPrice))
+      && (!maxPrice || (price <= maxPrice)));
+
   return (
     <>
       <ProductsHeader />
       <LogFilter
-        defaultMinPrice={defaultMinPrice}
-        defaultMaxPrice={defaultMaxPrice}
         setFilter={setFilter}
-      />
-      <ProductsList
-        products={products}
         filter={filter}
       />
+      {
+        filteredProducts.length === 0
+          ? 'Товары не найдены'
+          : <ProductsList products={filteredProducts} />
+      }
     </>
   );
 };

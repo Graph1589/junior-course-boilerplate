@@ -2,7 +2,8 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from './ProductFilter.module.css';
 
-const ProductFilter = ({ setFilter, defaultMinPrice, defaultMaxPrice }) => {
+const ProductFilter = ({ setFilter, filter }) => {
+  const { defaultMinPrice, defaultMaxPrice } = filter;
   const inputMinPrice = useRef(null);
   const inputMaxPrice = useRef(null);
 
@@ -11,6 +12,7 @@ const ProductFilter = ({ setFilter, defaultMinPrice, defaultMaxPrice }) => {
     const minPrice = +inputMinPrice.current.value;
     const maxPrice = +inputMaxPrice.current.value;
     setFilter({
+      ...filter,
       minPrice: minPrice < 0 ? null : minPrice,
       maxPrice: maxPrice < 0 ? null : maxPrice,
     });
@@ -36,15 +38,12 @@ const ProductFilter = ({ setFilter, defaultMinPrice, defaultMaxPrice }) => {
   );
 };
 
-ProductFilter.defaultProps = {
-  defaultMinPrice: 1,
-  defaultMaxPrice: 999999,
-};
-
 ProductFilter.propTypes = {
   setFilter: PropTypes.func.isRequired,
-  defaultMinPrice: PropTypes.number,
-  defaultMaxPrice: PropTypes.number,
+  filter: PropTypes.shape({
+    defaultMinPrice: PropTypes.number,
+    defaultMaxPrice: PropTypes.number,
+  }).isRequired,
 };
 
 export default ProductFilter;

@@ -4,12 +4,11 @@ import ProductFilter from '../ProductFilter/ProductFilter';
 
 export default class LogFilter extends LogRender {
   render() {
-    const { setFilter, defaultMinPrice, defaultMaxPrice } = this.props;
+    const { setFilter, filter } = this.props;
     return (
       <ProductFilter
         setFilter={setFilter}
-        defaultMinPrice={defaultMinPrice}
-        defaultMaxPrice={defaultMaxPrice}
+        filter={filter}
       />
     );
   }
