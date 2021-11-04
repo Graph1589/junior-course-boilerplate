@@ -1,13 +1,38 @@
 .productsList {
+  margin: 0;
+  grid-area: products;
+  grid-column: span 2;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 736px;
+  justify-content: space-around;
+  max-width: 796px;
   list-style: none;
   padding-inline-start: 0px;
-  margin: 50px;
 }
 
 .itemWrapper {
   margin-bottom: 50px;
+}
+
+.subPriceContent {
+  font-family: OpenSans, sans-serif;
+  font-size: 12px;
+  line-height: 24px;
+  color: #323c48;
+  padding-left: 8px;
+}
+
+.price {
+  font-family: OpenSans, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  color: #323c48;
+}
+
+.title {
+  font-family: OpenSans;
+  font-size: 16px;
+  line-height: 24px;
+  color: #323c48;
+  font-weight: 400;
 }

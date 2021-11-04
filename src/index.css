@@ -1,8 +1,12 @@
-main {
-  display: flex;
-  justify-content: center;
+header {
+  min-height: 80px;
 }
 
-header {
-  min-height: 50px;
+#root {
+  display: grid;
+  justify-content: space-around;
+  grid-gap: 50px;
+  grid-template-areas:
+    "header header header header"
+    "filter products products third";
 }

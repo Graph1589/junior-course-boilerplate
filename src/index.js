@@ -3,13 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import products from './products.json';
-import ProductsList from './components/ProductsList/ProductsList';
+import App from './App';
 
 const init = () => {
   const container = document.getElementById('root');
 
   ReactDOM.render(
-    <ProductsList
+    <App
       products={products}
     />, container,
   );

@@ -1,12 +1,13 @@
 /* Список товаров */
 .productsHeader {
-  height: 48px;
+  grid-area: header;
+  height: 50px;
+  margin: 0;
   font-family: OpenSans, sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 36px;
   line-height: 48px;
   text-align: center;
-  padding-bottom: 30px;
   color: #323c48;
 }
