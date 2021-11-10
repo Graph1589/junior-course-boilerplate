@@ -10,3 +10,8 @@ header {
     "header header header header"
     "filter products products third";
 }
+
+.filterWrapper {
+  grid-area: filter;
+  max-width: 256px;
+}

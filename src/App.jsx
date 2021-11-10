@@ -1,46 +1,66 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { minBy, maxBy } from 'csssr-school-utils';
 import ProductsList from './components/ProductsList/ProductsList';
 import ProductsHeader from './components/ProductsHeader/ProductsHeader';
-import LogFilter from './components/LogFilter/LogFilter';
+import InputNumber from './components/InputNumber/InputNumber';
+import InputDiscount from './components/InputDiscount/InputDiscount';
 
-const App = ({ products }) => {
-  const prices = products.map((item) => item.price);
-  const defaultMinPrice = minBy((price) => price, prices);
-  const defaultMaxPrice = maxBy((price) => price, prices);
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    const { products } = this.props;
+    const prices = products.map((item) => item.price);
+    const defaultMinPrice = minBy((price) => price, prices);
+    const defaultMaxPrice = maxBy((price) => price, prices);
+    const defaultDiscount = 30;
 
-  const initState = {
-    filter: {
-      minPrice: null,
-      maxPrice: null,
-      defaultMinPrice,
-      defaultMaxPrice,
-    },
-  };
+    this.state = {
+      filter: {
+        minPrice: defaultMinPrice,
+        maxPrice: defaultMaxPrice,
+        discount: defaultDiscount,
+      },
+    };
+  }
 
-  const [filter, setFilter] = useState(initState.filter);
+  setFilter = (receivedFilter) => {
+    const { filter } = this.state;
+    this.setState({
+      filter: { ...filter, ...receivedFilter },
+    });
+  }
 
-  const { minPrice, maxPrice } = filter;
-  const filteredProducts = products
-    .filter(({ price }) => (!minPrice || (price >= minPrice))
-      && (!maxPrice || (price <= maxPrice)));
-
-  return (
-    <>
-      <ProductsHeader />
-      <LogFilter
-        setFilter={setFilter}
-        filter={filter}
-      />
-      {
-        filteredProducts.length === 0
-          ? 'Товары не найдены'
-          : <ProductsList products={filteredProducts} />
-      }
-    </>
-  );
-};
+  render() {
+    const { filter } = this.state;
+    const { products } = this.props;
+    const { minPrice, maxPrice, discount } = filter;
+    const filteredProducts = products.filter((item) => (
+      (item.price >= minPrice) && (item.price <= maxPrice) && (item.discount >= discount)
+    ));
+    return (
+      <>
+        <ProductsHeader />
+        <div className="filterWrapper">
+          <InputNumber
+            setFilter={this.setFilter}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+          />
+          <InputDiscount
+            setFilter={this.setFilter}
+            discount={discount}
+          />
+        </div>
+        {
+          filteredProducts.length === 0
+            ? 'Товары не найдены'
+            : <ProductsList products={filteredProducts} />
+        }
+      </>
+    );
+  }
+}
 
 App.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object),
