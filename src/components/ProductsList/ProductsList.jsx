@@ -1,20 +1,23 @@
 import React from 'react';
+import * as _ from 'lodash';
 import { formatMoney } from 'csssr-school-utils';
-import ProductItem from 'csssr-school-product-card';
+import ProductCard from '../ProductCard/ProductCard';
 import RatingStar from '../RatingStar';
 import styled from './ProductsList.module.css';
 import LogRender from '../LogRender/LogRender';
 
-export default class ProductsList extends LogRender {
+// export default class ProductsList extends LogRender {
+class ProductsList extends LogRender {
   render() {
     const { products } = this.props;
 
     const renderList = () => (
       products.map(({
-        id, name, img, subPriceContent, isInStock, price, maxRating, rating,
+        id, name, img, discount, isInStock, price, maxRating, rating,
       }) => (
         <li key={id} className={styled.itemWrapper}>
-          <ProductItem
+          <ProductCard
+            key={id}
             isInStock={isInStock}
             img={img}
             title={name}
@@ -23,7 +26,11 @@ export default class ProductsList extends LogRender {
                 {`${formatMoney(price, 0, '.', ' ')} ₽`}
               </span>
             )}
-            subPriceContent={<span className={styled.subPriceContent}>{subPriceContent}</span>}
+            subPriceContent={(
+              <span className={styled.subPriceContent}>
+                {`- ${discount} %`}
+              </span>
+            )}
             maxRating={maxRating}
             rating={rating}
             ratingComponent={RatingStar}
@@ -37,3 +44,11 @@ export default class ProductsList extends LogRender {
     );
   }
 }
+
+const areEqual = (props, nextProps) => {
+  const productsIds = props.products.map((product) => product.id);
+  const nextProductsIds = nextProps.products.map((product) => product.id);
+  return _.isEqual(productsIds, nextProductsIds);
+};
+
+export default React.memo(ProductsList, areEqual);

@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  max-width: 796px;
+  max-width: 736px;
   list-style: none;
   padding-inline-start: 0px;
 }

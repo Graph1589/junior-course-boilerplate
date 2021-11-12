@@ -1,28 +1,8 @@
-.filter {
-  grid-area: filter;
-  width: 70%;
-}
-
 .title {
   font-family: OpenSans, sans-serif;
   font-size: 20px;
   line-height: 28px;
   color: #323c48;
-}
-
-.submit {
-  width: 100%;
-
-  border: 2px solid #323c48;
-  padding-top: 5px;
-  padding-bottom: 5px;
-
-  font-family: OpenSans, sans-serif;
-  font-size: 14px;
-  line-height: 100%;
-
-  color: #ffffff;
-  background-color: #323c48;
 }
 
 input::-webkit-outer-spin-button,
@@ -34,10 +14,15 @@ input::-webkit-inner-spin-button {
   -moz-appearance: textfield;
   background: #ffffff;
   border: 1px solid #7e8fa4;
+  height: 30px;
   box-sizing: border-box;
   padding-bottom: 5px;
   padding-top: 5px;
   width: 30%;
+}
+
+label {
+  font-weight: bold;
 }
 
 .inputContainer {
