@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import styled from './InputNumber.module.css';
 import LogRender from '../LogRender/LogRender';
@@ -16,9 +17,9 @@ class InputNumber extends LogRender {
           <b>Цена</b>
         </div>
         <div className={styled.inputContainer}>
-          <b>От</b>
+          <label>От</label>
           <input onChange={onChange} name="minPrice" className={styled.input} value={minPrice} />
-          <b>До</b>
+          <label>До</label>
           <input onChange={onChange} name="maxPrice" className={styled.input} value={maxPrice} />
         </div>
       </form>

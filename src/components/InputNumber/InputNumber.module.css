@@ -21,6 +21,10 @@ input::-webkit-inner-spin-button {
   width: 30%;
 }
 
+label {
+  font-weight: bold;
+}
+
 .inputContainer {
   font-family: OpenSans, sans-serif;
   font-size: 14px;
