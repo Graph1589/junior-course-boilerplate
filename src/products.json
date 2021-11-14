@@ -8,7 +8,8 @@
     "discount": 10,
     "maxRating": 5,
     "rating": 3,
-    "isInStock": true
+    "isInStock": true,
+    "category": "clothes"
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "discount": 20,
     "maxRating": 5,
     "rating": 3,
-    "isInStock": false
+    "isInStock": false,
+    "category": "clothes"
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "discount": 30,
     "maxRating": 5,
     "rating": 3,
-    "isInStock": true
+    "isInStock": true,
+    "category": "clothes"
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "discount": 40,
     "maxRating": 5,
     "rating": 3,
-    "isInStock": true
+    "isInStock": true,
+    "category": "books"
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
     "discount": 50,
     "maxRating": 5,
     "rating": 3,
-    "isInStock": true
+    "isInStock": true,
+    "category": "books"
   },
   {
     "id": 6,
@@ -63,6 +68,7 @@
     "discount": 60,
     "maxRating": 5,
     "rating": 3,
-    "isInStock": false
+    "isInStock": false,
+    "category": "books"
   }
 ]

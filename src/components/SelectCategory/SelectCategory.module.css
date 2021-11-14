@@ -1,0 +1,44 @@
+.wrapper {
+  padding-top: 40px;
+}
+
+.title {
+  padding-bottom: 15px;
+  font-family: OpenSans, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  color: #323c48;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.categoryButton {
+  background: #ffffff;
+  border: 1px solid #7e8fa4;
+  box-sizing: border-box;
+  border-radius: 15px;
+  height: 30px;
+  width: 80px;
+}
+
+.active {
+  background: #323c48;
+  border: 1px solid #323c48;
+  border-radius: 15px;
+  color: #ffffff;
+}
+
+.categoryButtonsWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.categoryButtonLabel :first-letter {
+  text-transform: capitalize;
+}
