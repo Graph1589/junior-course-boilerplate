@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { minBy, maxBy } from 'csssr-school-utils';
@@ -103,7 +102,7 @@ class App extends React.PureComponent {
   getUniqCategories = () => {
     const { products } = this.props;
     const categories = products.map(({ category }) => category);
-    return _.uniq(categories);
+    return [...new Set(categories)];
   }
 
   setFilter = (receivedFilter) => {
