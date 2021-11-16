@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import CategoryContext from '../../context';
 import LogRender from '../LogRender/LogRender';
 import styled from './SelectCategory.module.css';
@@ -13,15 +12,23 @@ class SelectCategory extends LogRender {
         {((activeCategories) => (
           <div className={styled.categoryButtonsWrapper}>
             {categories.map((category) => {
-              const categoryBtnCn = cn(styled.categoryButton, {
-                [styled.active]: activeCategories.includes(category),
-              });
+              const isActive = activeCategories.includes(category);
               return (
-                <p key={`${category}-category-btn`} className={styled.categoryButtonLabel}>
-                  <button onClick={handleCategoryClick(category)} name={category} type="submit" className={categoryBtnCn}>
+                <React.Fragment key={`${category}-category-button`}>
+                  <input
+                    id={`${category}-category-input`}
+                    className={styled.categoryInput}
+                    type="checkbox"
+                    onChange={handleCategoryClick(category)}
+                    checked={isActive}
+                  />
+                  <label
+                    htmlFor={`${category}-category-input`}
+                    className={styled.categoryLabel}
+                  >
                     {category}
-                  </button>
-                </p>
+                  </label>
+                </React.Fragment>
               );
             })}
           </div>
