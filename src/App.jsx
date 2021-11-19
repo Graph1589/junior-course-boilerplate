@@ -5,6 +5,9 @@ import ProductsList from './components/ProductsList/ProductsList';
 import ProductsHeader from './components/ProductsHeader/ProductsHeader';
 import InputNumber from './components/InputNumber/InputNumber';
 import InputDiscount from './components/InputDiscount/InputDiscount';
+import SelectCategory from './components/SelectCategory/SelectCategory';
+import ResetFilterButton from './components/ResetFiltersButton/ResetFilterButton';
+import CategoryContext from './context';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -14,14 +17,92 @@ class App extends React.PureComponent {
     const defaultMinPrice = minBy((price) => price, prices);
     const defaultMaxPrice = maxBy((price) => price, prices);
     const defaultDiscount = 30;
+    this.uniqCategories = this.getUniqCategories();
+
+    this.defaultFilter = {
+      minPrice: defaultMinPrice,
+      maxPrice: defaultMaxPrice,
+      discount: defaultDiscount,
+      activeCategories: [],
+    };
 
     this.state = {
-      filter: {
-        minPrice: defaultMinPrice,
-        maxPrice: defaultMaxPrice,
-        discount: defaultDiscount,
-      },
+      filter: this.defaultFilter,
     };
+  }
+
+  componentDidMount() {
+    window.addEventListener('popstate', this.setFromHistory);
+    const [, categoriesFromUrl] = window.location.search.split('=');
+    if (categoriesFromUrl) {
+      window.history.replaceState({ categories: categoriesFromUrl }, 'categories', window.location.search);
+      this.setState((state) => {
+        const { filter } = state;
+        return {
+          ...state, filter: { ...filter, activeCategories: categoriesFromUrl.split('&') },
+        };
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('popstate', this.setFromHistory);
+  }
+
+  setFromHistory = (e) => {
+    const activeCategories = e.state.categories;
+    this.setState((state) => {
+      const { filter } = state;
+      return {
+        ...state, filter: { ...filter, activeCategories },
+      };
+    });
+  }
+
+  handleResetFilters = () => {
+    this.setState((state) => ({
+      ...state,
+      filter: this.defaultFilter,
+    }));
+    window.history.pushState(
+      null,
+      'all categories',
+      '/',
+    );
+  }
+
+  handleCategoryClick = (category) => () => {
+    const { filter: { activeCategories } } = this.state;
+    const newActiveCategories = activeCategories.includes(category)
+      ? activeCategories.filter((item) => item !== category)
+      : [...activeCategories, category];
+
+    this.setState((state) => {
+      const { filter } = state;
+      return {
+        ...state,
+        filter: {
+          ...filter,
+          activeCategories: newActiveCategories,
+        },
+      };
+    });
+
+    const queryCategories = newActiveCategories.legth === 0
+      ? '/'
+      : `?categories=${newActiveCategories.join('&')}`;
+
+    window.history.pushState(
+      { categories: newActiveCategories },
+      'categories',
+      queryCategories,
+    );
+  }
+
+  getUniqCategories = () => {
+    const { products } = this.props;
+    const categories = products.map(({ category }) => category);
+    return [...new Set(categories)];
   }
 
   setFilter = (receivedFilter) => {
@@ -34,10 +115,15 @@ class App extends React.PureComponent {
   render() {
     const { filter } = this.state;
     const { products } = this.props;
-    const { minPrice, maxPrice, discount } = filter;
+    const {
+      minPrice, maxPrice, discount, activeCategories,
+    } = filter;
+
     const filteredProducts = products.filter((item) => (
       (item.price >= minPrice) && (item.price <= maxPrice) && (item.discount >= discount)
+      && (activeCategories.includes(item.category) || activeCategories.length === 0)
     ));
+
     return (
       <>
         <ProductsHeader />
@@ -50,6 +136,15 @@ class App extends React.PureComponent {
           <InputDiscount
             setFilter={this.setFilter}
             discount={discount}
+          />
+          <CategoryContext.Provider value={activeCategories}>
+            <SelectCategory
+              categories={this.uniqCategories}
+              handleCategoryClick={this.handleCategoryClick}
+            />
+          </CategoryContext.Provider>
+          <ResetFilterButton
+            onClick={this.handleResetFilters}
           />
         </div>
         {

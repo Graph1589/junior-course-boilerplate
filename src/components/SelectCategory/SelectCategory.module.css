@@ -1,0 +1,64 @@
+.wrapper {
+  padding-top: 40px;
+}
+
+.title {
+  padding-bottom: 15px;
+  font-family: OpenSans, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  color: #323c48;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.categoryButtonsWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.active {
+  background: #323c48;
+  border: 1px solid #323c48;
+  border-radius: 15px;
+  color: #ffffff;
+}
+
+.categoryLabel {
+  cursor: pointer;
+  font-family: OpenSans, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #7e8fa4;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #7e8fa4;
+  box-sizing: border-box;
+  border-radius: 15px;
+  height: 32px;
+  text-align: center;
+  line-height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.categoryInput:checked + .categoryLabel {
+  background: #323c48;
+  color: #ffffff;
+}
+
+.categoryLabel:first-letter {
+  text-transform: uppercase;
+}
+
+.categoryInput {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
